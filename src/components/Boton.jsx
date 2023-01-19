@@ -2,10 +2,14 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+//Botón que recibe props 
+
 const Boton = (props) => {
     const nombre = props.nombre;
     const contrasena = props.contrasena;
     const botonNombre = props.botonNombre;
+
+    //Si el nombre y la contraseña no son vacíos se activa el botón, en caso contrario queda desactivado.
 
     if(nombre!=="" && contrasena!==""){
         return (

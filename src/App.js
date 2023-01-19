@@ -7,6 +7,8 @@ import Footer from './components/Footer';
 import { useState } from 'react';
 
 function App() {
+
+  //Se almacenan los estos de los inputs y alertas.
   const [nombre, setNombre] = useState("");
   const [contrasena, setContrasena] = useState("");
   const [mostrar, setMostrar] = useState(false);
@@ -20,9 +22,13 @@ function App() {
   const validarInputs = (event) => {
     //Validación;
     event.preventDefault();
+
+    //Verificar si el nombre y contraseña, mostrar una alerta distinta dependiendo si los datos son correctos.
+  
     if (nombre === 'ADL' && contrasena === '252525') {
       setAlertType("success");
       setAlertMessage("Usted a ingresado al sitio correctamente.");
+      //En caso de que los datos sean correctos se borran los valores de los inputs.
       setMostrar(true);
       setNombre("");
       setContrasena("");
@@ -30,6 +36,7 @@ function App() {
     else {
       setAlertType("danger");
       setAlertMessage("Los datos son incorrectos!");
+      //En caso de que los datos no sean correctos se borran los valores de los inputs.
       setMostrar(true);
       setNombre("");
       setContrasena("");
@@ -48,14 +55,14 @@ function App() {
                   {alertMessage}
                 </Alert>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Nombre</Form.Label>
-                  <input className="form-control" type="text" name="nombre" placeholder="Ingrese su nombre"
+                  <Form.Label for="nombre">Nombre</Form.Label>
+                  <input id="nombre" className="form-control" type="text" name="nombre" placeholder="Ingrese su nombre"
                     onChange={(e) => setNombre(e.target.value)} value={nombre} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Contraseña</Form.Label>
-                  <input className="form-control" type="password" name="contraseña" placeholder="Password"
+                  <Form.Label for="contraseña">Contraseña</Form.Label>
+                  <input id="contraseña" className="form-control" type="password" name="contraseña" placeholder="contraseña"
                     onChange={(e) => setContrasena(e.target.value)} value={contrasena} />
                 </Form.Group>
                 <Boton nombre={nombre} contrasena={contrasena} botonNombre="Iniciar sesión" />
